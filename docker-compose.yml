@@ -4,6 +4,7 @@ services:
 
   loki:
     image: grafana/loki:2.6.1
+    container_name: Loki
     ports:
       - "3100"
     volumes:
@@ -12,6 +13,7 @@ services:
 
   promtail:
     image: grafana/promtail:2.6.1
+    container_name: Promtail
     volumes:
       # custom config will read logs from the containers
       - ./loki/promtail-config.yaml:/etc/promtail/config.yml
@@ -23,6 +25,8 @@ services:
   # default credentials: admin/admin
   grafana:
     image: grafana/grafana:9.2.2
+    container_name: Grafana
+    restart: unless-stopped
     ports:
       - "3000:3000"
     volumes:
