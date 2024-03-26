@@ -38,6 +38,7 @@ services:
   # will create a basic web for monitor
   nginx:
     image: nginx:latest
+    container_name: Nginx
     ports:
       - "8080:80"
     volumes:
